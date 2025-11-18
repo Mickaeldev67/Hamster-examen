@@ -32,4 +32,11 @@ symfony server:start
 
 ## Tester les routes ! 
 1. Pour commencer créez un login avec 
-/api/register en POST 
+POST /api/register
+
+2. List de toutes les routes disponible :
+POST /api/login
+DELETE /api/delete/{id}
+GET /api/user
+GET /api/hamsters
+GET /api/hamsters/{id}

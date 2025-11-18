@@ -8,7 +8,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\User;
 use App\Repository\HamsterRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\Json;
 
 final class HamsterController extends AbstractController
@@ -41,5 +43,22 @@ final class HamsterController extends AbstractController
                 'error' => 'Hamster not found'
             ], JsonResponse::HTTP_FORBIDDEN);
         }
+    }
+
+    #[Route('/api/hamsters/reproduce', name: 'app_hamster_reproduce', methods: ['POST'])]
+    public function hamsterReproduce(EntityManagerInterface $em, Request $request): JsonResponse
+    {
+        // Implementation of reproduction logic goes here
+        $idHamster1 = $request->get('idHamster1');
+        $idHamster2 = $request->get('idHamster2');
+
+        $user = $this->getUser();
+
+        $hamster = new Hamster();
+        // Création du nouveau hamster 
+
+        return $this->json([
+            'message' => 'Hamster reproduction not yet implemented'
+        ], JsonResponse::HTTP_NOT_IMPLEMENTED);
     }
 }
